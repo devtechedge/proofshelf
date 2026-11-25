@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="ProofShelf">
+  <rect width="64" height="64" rx="16" fill="#17132b"/>
+  <rect x="14" y="12" width="34" height="40" rx="7" fill="#8debff" transform="rotate(-9 31 32)"/>
+  <rect x="18" y="10" width="34" height="42" rx="7" fill="#d8ff3e" transform="rotate(5 35 31)"/>
+  <rect x="16" y="13" width="34" height="40" rx="7" fill="#f6f3ff" stroke="#17132b" stroke-width="3"/>
+  <path d="M24 24h18M24 31h18M24 38h11" stroke="#17132b" stroke-width="3" stroke-linecap="round"/>
+  <circle cx="43" cy="43" r="8" fill="#5b3df5" stroke="#f6f3ff" stroke-width="3"/>
+  <path d="m39.5 43 2.2 2.2 4.3-4.5" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>

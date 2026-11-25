@@ -3,6 +3,7 @@ import type { NextRequest } from "next/server";
 import { eq } from "drizzle-orm";
 import { getDb } from "@/db/client";
 import { accounts } from "@/db/schema";
+import { HttpError } from "@/server/errors";
 
 export const SESSION_COOKIE = "proofshelf_session";
 const SESSION_MAX_AGE = 60 * 60 * 24 * 365;
@@ -73,6 +74,6 @@ export function assertSameOrigin(request: NextRequest) {
     throw new Error("Invalid request origin.");
   }
   if (originHost !== request.headers.get("host")) {
-    throw new Error("Cross-origin mutation rejected.");
+    throw new HttpError(403, "Cross-origin mutation rejected.");
   }
 }

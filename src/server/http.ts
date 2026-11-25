@@ -1,20 +1,8 @@
 import { NextResponse } from "next/server";
 import { sessionCookie } from "@/server/session";
+import { HttpError } from "@/server/errors";
 
-export class HttpError extends Error {
-  status: number;
-
-  constructor(status: number, message: string) {
-    super(message);
-    this.status = status;
-  }
-}
-
-export class RoundAlreadyPlayedError extends HttpError {
-  constructor() {
-    super(409, "This round has already been recorded. Try review mode instead.");
-  }
-}
+export { HttpError, RoundAlreadyPlayedError } from "@/server/errors";
 
 export function jsonResponse(body: unknown, init?: ResponseInit, token?: string) {
   const response = NextResponse.json(body, init);

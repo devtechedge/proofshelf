@@ -2,7 +2,7 @@
   "name": "proofshelf",
   "version": "1.0.0",
   "private": true,
-  "description": "A provenance-first supplement evidence ledger and private stack planner.",
+  "description": "A card-sorting game for supplement evidence literacy, label reading, and safety calibration.",
   "engines": {
     "node": ">=22 <27"
   },

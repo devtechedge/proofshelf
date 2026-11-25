@@ -30,7 +30,7 @@ export function SiteHeader() {
                     active ? "bg-[var(--ink)] text-[var(--paper)]" : "text-[var(--muted)] hover:bg-[var(--violet-soft)] hover:text-[var(--ink)]"
                   }`}
                 >
-                  {link.label}
+                  {link.label === "Card library" ? <><span className="sm:hidden">Cards</span><span className="hidden sm:inline">Card library</span></> : link.label}
                 </Link>
               );
             })}

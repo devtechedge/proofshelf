@@ -72,6 +72,25 @@
 html {
   scroll-behavior: smooth;
   background: var(--paper);
+  scrollbar-width: thin;
+  scrollbar-color: transparent var(--paper);
+}
+
+html:hover {
+  scrollbar-color: var(--muted) var(--paper);
+}
+
+html::-webkit-scrollbar {
+  width: 10px;
+  background: var(--paper);
+}
+
+html::-webkit-scrollbar-track {
+  background: var(--paper);
+}
+
+html:hover::-webkit-scrollbar-thumb {
+  background: var(--muted);
 }
 
 body {

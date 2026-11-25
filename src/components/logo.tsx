@@ -11,7 +11,7 @@ export function Logo({ compact = false }: { compact?: boolean }) {
         <circle cx="33" cy="33" r="7" fill="var(--violet)" stroke="var(--paper-strong)" strokeWidth="2.5" />
         <path d="m30 33 2 2 3.5-4" fill="none" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
       </svg>
-      {!compact && <span className="font-display text-lg font-semibold tracking-[-0.06em]">ProofShelf</span>}
+      {!compact && <span className="hidden font-display text-lg font-semibold tracking-[-0.06em] sm:inline">ProofShelf</span>}
     </Link>
   );
 }

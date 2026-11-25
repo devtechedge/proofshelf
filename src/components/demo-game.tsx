@@ -85,7 +85,7 @@ export function DemoGame() {
   return (
     <div className="grid items-start gap-6 lg:grid-cols-[minmax(0,1.15fr)_minmax(320px,0.85fr)]">
       <div>
-        <EvidenceCard card={card} revealed={revealed} sources={revealed ? DEMO_SOURCES : []} />
+        <EvidenceCard card={card} revealed={revealed} sources={revealed ? DEMO_SOURCES.filter((source) => card.sourceIds.includes(source.id)) : []} />
       </div>
       <div className="rounded-[28px] border border-[var(--line)] bg-[var(--paper)] p-5 sm:p-6">
         <div className="flex items-center justify-between gap-4">

@@ -22,7 +22,6 @@ export function ProgressRibbon({ refreshKey = 0 }: { refreshKey?: number }) {
   const [message, setMessage] = useState("");
 
   const load = useCallback(async () => {
-    setLoading(true);
     try {
       const response = await fetch("/api/progress", { cache: "no-store" });
       if (!response.ok) throw new Error("Progress could not be loaded.");
@@ -35,8 +34,24 @@ export function ProgressRibbon({ refreshKey = 0 }: { refreshKey?: number }) {
   }, []);
 
   useEffect(() => {
-    void load();
-  }, [load, refreshKey]);
+    let active = true;
+    async function fetchInitialProgress() {
+      try {
+        const response = await fetch("/api/progress", { cache: "no-store" });
+        if (!response.ok) throw new Error("Progress could not be loaded.");
+        const data = (await response.json()) as ProgressData;
+        if (active) setProgress(data);
+      } catch {
+        if (active) setMessage("Progress is unavailable right now. You can still play.");
+      } finally {
+        if (active) setLoading(false);
+      }
+    }
+    void fetchInitialProgress();
+    return () => {
+      active = false;
+    };
+  }, [refreshKey]);
 
   async function erase() {
     if (!window.confirm("Erase all ProofShelf progress stored for this browser? This cannot be undone.")) return;

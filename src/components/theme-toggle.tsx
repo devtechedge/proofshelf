@@ -1,21 +1,29 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useSyncExternalStore } from "react";
 import { Moon, Sun } from "lucide-react";
 
-export function ThemeToggle() {
-  const [theme, setTheme] = useState<"light" | "dark">("light");
+function subscribe(callback: () => void) {
+  window.addEventListener("proofshelf-theme-change", callback);
+  return () => window.removeEventListener("proofshelf-theme-change", callback);
+}
 
-  useEffect(() => {
-    const active = document.documentElement.dataset.theme === "dark" ? "dark" : "light";
-    setTheme(active);
-  }, []);
+function getSnapshot(): "light" | "dark" {
+  return document.documentElement.dataset.theme === "dark" ? "dark" : "light";
+}
+
+function getServerSnapshot(): "light" | "dark" {
+  return "light";
+}
+
+export function ThemeToggle() {
+  const theme = useSyncExternalStore(subscribe, getSnapshot, getServerSnapshot);
 
   function toggleTheme() {
     const next = theme === "light" ? "dark" : "light";
     document.documentElement.dataset.theme = next;
     localStorage.setItem("proofshelf-theme", next);
-    setTheme(next);
+    window.dispatchEvent(new Event("proofshelf-theme-change"));
   }
 
   return (

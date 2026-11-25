@@ -1,19 +1,19 @@
 import Link from "next/link";
 import { ArrowUpRight, Check, FlaskConical, ShieldAlert } from "lucide-react";
 import type { EvidenceCard, EvidenceSource } from "@/data/types";
+import type { PublicCard } from "@/domain/cards";
 import { getVerdictMeta } from "@/domain/game";
 
 type EvidenceCardProps = {
-  card: EvidenceCard;
+  card: EvidenceCard | PublicCard;
   revealed?: boolean;
   sources?: EvidenceSource[];
   compact?: boolean;
 };
 
 export function EvidenceCard({ card, revealed = false, sources = [], compact = false }: EvidenceCardProps) {
-  const verdict = getVerdictMeta(card.verdict);
-
-  if (revealed) {
+  if (revealed && "verdict" in card) {
+    const verdict = getVerdictMeta(card.verdict);
     return (
       <article className={`card-reveal perforated relative overflow-hidden rounded-[28px] border border-[var(--line)] bg-[var(--paper-strong)] p-6 shadow-[var(--shadow)] sm:p-8 ${compact ? "max-w-2xl" : ""}`}>
         <div className="flex flex-wrap items-center justify-between gap-3">

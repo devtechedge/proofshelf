@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { useCallback, useEffect, useState } from "react";
 import { ArrowRight, LoaderCircle, RefreshCw } from "lucide-react";
-import type { EvidenceCard, EvidenceSource, RoundAnswer, RoundResult, Verdict } from "@/data/types";
+import type { EvidenceCard as EvidenceCardData, EvidenceSource, RoundAnswer, RoundResult, Verdict } from "@/data/types";
 import type { PublicCard } from "@/domain/cards";
 import { VERDICTS, getVerdictMeta } from "@/domain/game";
 import { ConfidenceDial } from "@/components/confidence-dial";
@@ -13,7 +13,7 @@ import { VerdictBins } from "@/components/verdict-bins";
 
 type GameMode = "daily" | "review" | "practice";
 type RoundPayload = { mode: GameMode; seed: string; cards: PublicCard[]; total: number; needsPractice?: boolean };
-type RevealPayload = { card: EvidenceCard; sources: EvidenceSource[] };
+type RevealPayload = { card: EvidenceCardData; sources: EvidenceSource[] };
 
 type GameTableProps = {
   mode: GameMode;
@@ -32,19 +32,17 @@ export function GameTable({ mode, onComplete }: GameTableProps) {
   const [error, setError] = useState("");
 
   const loadRound = useCallback(async () => {
-    setPhase("loading");
-    setError("");
-    setRound(null);
-    setIndex(0);
-    setSelected(null);
-    setConfidence(2);
-    setAnswers([]);
-    setReveal(null);
-    setResult(null);
     try {
       const response = await fetch(`/api/round?mode=${mode}`, { cache: "no-store" });
       if (!response.ok) throw new Error("The round could not be loaded.");
       const payload = (await response.json()) as RoundPayload;
+      setError("");
+      setIndex(0);
+      setSelected(null);
+      setConfidence(2);
+      setAnswers([]);
+      setReveal(null);
+      setResult(null);
       setRound(payload);
       setPhase(payload.cards.length === 0 ? "result" : "playing");
       if (payload.cards.length === 0) setError(payload.needsPractice ? "No review cards yet. Play a daily round first." : "No cards are available right now.");
@@ -55,8 +53,34 @@ export function GameTable({ mode, onComplete }: GameTableProps) {
   }, [mode]);
 
   useEffect(() => {
-    void loadRound();
-  }, [loadRound]);
+    let active = true;
+    async function fetchInitialRound() {
+      try {
+        const response = await fetch(`/api/round?mode=${mode}`, { cache: "no-store" });
+        if (!response.ok) throw new Error("The round could not be loaded.");
+        const payload = (await response.json()) as RoundPayload;
+        if (!active) return;
+        setError("");
+        setIndex(0);
+        setSelected(null);
+        setConfidence(2);
+        setAnswers([]);
+        setReveal(null);
+        setResult(null);
+        setRound(payload);
+        setPhase(payload.cards.length === 0 ? "result" : "playing");
+        if (payload.cards.length === 0) setError(payload.needsPractice ? "No review cards yet. Play a daily round first." : "No cards are available right now.");
+      } catch (cause) {
+        if (!active) return;
+        setError(cause instanceof Error ? cause.message : "The round could not be loaded.");
+        setPhase("error");
+      }
+    }
+    void fetchInitialRound();
+    return () => {
+      active = false;
+    };
+  }, [mode]);
 
   const lockAnswer = useCallback(async () => {
     if (!selected || !round || reveal || phase !== "playing") return;
@@ -196,11 +220,11 @@ export function GameTable({ mode, onComplete }: GameTableProps) {
           </div>
         ) : (
           <div className="mt-6 space-y-5">
-            <div className={`verdict-${displayCard.verdict} rounded-2xl p-5`} style={{ background: "var(--verdict-soft)" }}>
+            <div className={`verdict-${reveal.card.verdict} rounded-2xl p-5`} style={{ background: "var(--verdict-soft)" }}>
               <p className="font-mono text-[11px] font-bold uppercase tracking-[0.12em]" style={{ color: "var(--verdict-color)" }}>
-                {selected === displayCard.verdict ? "Correct read" : "The claim needed a closer read"}
+                {selected === reveal.card.verdict ? "Correct read" : "The claim needed a closer read"}
               </p>
-              <p className="mt-2 text-sm leading-6">You chose {getVerdictMeta(selected ?? "mixed").label}. The evidence verdict is {getVerdictMeta(displayCard.verdict).label}.</p>
+              <p className="mt-2 text-sm leading-6">You chose {getVerdictMeta(selected ?? "mixed").label}. The evidence verdict is {getVerdictMeta(reveal.card.verdict).label}.</p>
             </div>
             <button type="button" className="button-primary w-full" disabled={phase === "submitting"} onClick={next}>
               {phase === "submitting" ? <LoaderCircle className="animate-spin" size={16} aria-hidden="true" /> : <ArrowRight size={16} aria-hidden="true" />}
@@ -209,7 +233,7 @@ export function GameTable({ mode, onComplete }: GameTableProps) {
           </div>
         )}
         {error && <p className="mt-4 rounded-xl bg-[var(--coral-soft)] p-3 text-sm leading-6 text-[var(--coral)]" role="alert">{error}</p>}
-        <p className="sr-only" aria-live="polite">{reveal ? `Evidence revealed. Correct verdict: ${displayCard.verdict}.` : ""}</p>
+        <p className="sr-only" aria-live="polite">{reveal ? `Evidence revealed. Correct verdict: ${reveal.card.verdict}.` : ""}</p>
       </div>
     </div>
   );

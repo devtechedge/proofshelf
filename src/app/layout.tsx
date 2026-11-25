@@ -7,20 +7,20 @@ import "./globals.css";
 const display = Unbounded({
   subsets: ["latin"],
   variable: "--font-display",
-  display: "swap",
+  display: "optional",
 });
 
 const body = Manrope({
   subsets: ["latin"],
   variable: "--font-body",
-  display: "swap",
+  display: "optional",
 });
 
 const mono = Roboto_Mono({
   subsets: ["latin"],
   weight: ["400", "500", "700"],
   variable: "--font-mono",
-  display: "swap",
+  display: "optional",
 });
 
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000";

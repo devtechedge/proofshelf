@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { ArrowRight, BrainCircuit, Layers3, ScanLine, ShieldCheck } from "lucide-react";
-import { DemoGame } from "@/components/demo-game";
+import { DemoGameLoader } from "@/components/demo-game-loader";
 import { CATEGORIES } from "@/data/catalog";
 
 export default function HomePage() {
@@ -43,7 +43,7 @@ export default function HomePage() {
           </div>
           <p className="max-w-md text-sm leading-6 text-[var(--muted)]">Choose a verdict, set your confidence, and reveal the reasoning. Your answer is a calibration tool, not a medical decision.</p>
         </div>
-        <DemoGame />
+        <DemoGameLoader />
       </section>
 
       <section className="border-y border-[var(--line)] bg-[var(--paper-strong)]">

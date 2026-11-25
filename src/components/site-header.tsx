@@ -14,7 +14,7 @@ const links = [
 export function SiteHeader() {
   const pathname = usePathname();
   return (
-    <header className="no-print sticky top-0 z-50 border-b border-[var(--line)] bg-[color:var(--paper)]/90 backdrop-blur-xl">
+    <header className="no-print sticky top-0 z-50 border-b border-[var(--line)] bg-[var(--paper)]">
       <div className="mx-auto flex h-[72px] max-w-7xl items-center justify-between gap-4 px-4 sm:px-6 lg:px-8">
         <Logo />
         <div className="flex items-center gap-1 sm:gap-2">

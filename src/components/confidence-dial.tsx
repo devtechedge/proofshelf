@@ -28,7 +28,7 @@ export function ConfidenceDial({ value, onChange, disabled = false }: Confidence
             }`}
           >
             <span className="block text-sm font-bold">{option.label}</span>
-            <span className="mt-1 hidden text-[10px] leading-4 opacity-75 sm:block">{option.detail}</span>
+            <span className="mt-1 hidden text-[10px] leading-4 sm:block">{option.detail}</span>
           </button>
         ))}
       </div>

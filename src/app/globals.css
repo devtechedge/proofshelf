@@ -4,7 +4,7 @@
   --paper: #f6f3ff;
   --paper-strong: #ffffff;
   --ink: #17132b;
-  --muted: #6f6885;
+  --muted: #625b78;
   --line: #d9d2ea;
   --violet: #5b3df5;
   --violet-soft: #e7e0ff;
@@ -221,22 +221,22 @@ button:not(:disabled),
 }
 
 .verdict-supported {
-  --verdict-color: #2f8f5b;
+  --verdict-color: #166534;
   --verdict-soft: #dff7e9;
 }
 
 .verdict-mixed {
-  --verdict-color: #a76500;
+  --verdict-color: #92400e;
   --verdict-soft: #fff0c9;
 }
 
 .verdict-preliminary {
-  --verdict-color: #5b3df5;
+  --verdict-color: #4c1d95;
   --verdict-soft: #e7e0ff;
 }
 
 .verdict-unsupported {
-  --verdict-color: #c43f4b;
+  --verdict-color: #991b1b;
   --verdict-soft: #ffe1e1;
 }
 

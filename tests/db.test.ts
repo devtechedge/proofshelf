@@ -1,12 +1,17 @@
-import { describe, expect, it } from "vitest";
+import { beforeAll, describe, expect, it } from "vitest";
 import { eq } from "drizzle-orm";
-import { createPgliteDatabase } from "@/db/client";
+import { createPgliteDatabase, type Database } from "@/db/client";
 import { accounts, cardProgress, rounds } from "@/db/schema";
 import { accountRefForToken, createSessionToken } from "@/server/session";
 
 describe("database schema", () => {
+  let db: Database;
+
+  beforeAll(async () => {
+    db = await createPgliteDatabase();
+  });
+
   it("creates the schema and cascades account deletion", async () => {
-    const db = await createPgliteDatabase();
     const accountRef = "acct_test_cascade";
     await db.insert(accounts).values({ accountRef });
     await db.insert(cardProgress).values({
@@ -36,7 +41,6 @@ describe("database schema", () => {
   });
 
   it("rejects confidence outside the allowed range", async () => {
-    const db = await createPgliteDatabase();
     await db.insert(accounts).values({ accountRef: "acct_test_bounds" });
     await expect(
       db.insert(cardProgress).values({

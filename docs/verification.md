@@ -56,4 +56,4 @@ Desktop Chromium Lighthouse returned 100 for accessibility, best practices, and 
 
 ## Release status
 
-The repository is public, the production alias is live, and the build history contains more than 65 substantive commits. The final CI and release checks are recorded after the last push.
+The repository is public, the production alias is live, and the build history contains 65 substantive commits. CI run [45734033881](https://github.com/devtechedge/proofshelf/actions/runs/45734033881) passed on the final production capture commit. The v1.0.0 release tag points at the final documentation commit.

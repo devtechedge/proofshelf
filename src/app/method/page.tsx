@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { ArrowUpRight, Database, FlaskConical, LockKeyhole, ShieldCheck, Store } from "lucide-react";
+import { ArrowUpRight, Database, FlaskConical, LockKeyhole, ShieldCheck, Store } from "@/components/icons";
 import { VERDICTS } from "@/domain/game";
 
 export const metadata: Metadata = {

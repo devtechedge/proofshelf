@@ -1,7 +1,7 @@
 "use client";
 
 import { useCallback, useEffect, useState } from "react";
-import { Eraser, RefreshCw, Target } from "lucide-react";
+import { Eraser, RefreshCw, Target } from "@/components/icons";
 
 type ProgressData = {
   summary: { practiced: number; mastered: number; total: number; percent: number };

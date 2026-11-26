@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { ArrowLeft, ArrowRight, ArrowUpRight, BookOpen, ShieldAlert } from "lucide-react";
+import { ArrowLeft, ArrowRight, ArrowUpRight, BookOpen, ShieldAlert } from "@/components/icons";
 import { CATALOG, getCardBySlug, getSourcesForCard } from "@/data/catalog";
 import { EvidenceCard } from "@/components/evidence-card";
 import { getVerdictMeta } from "@/domain/game";

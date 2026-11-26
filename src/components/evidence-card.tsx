@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { ArrowUpRight, Check, FlaskConical, ShieldAlert } from "lucide-react";
+import { ArrowUpRight, Check, FlaskConical, ShieldAlert } from "@/components/icons";
 import type { EvidenceCard, EvidenceSource } from "@/data/types";
 import type { PublicCard } from "@/domain/cards";
 import { getVerdictMeta } from "@/domain/game";

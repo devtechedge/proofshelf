@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { ArrowRight, CheckCircle2, RotateCcw, Target, TriangleAlert } from "lucide-react";
+import { ArrowRight, CheckCircle2, RotateCcw, Target, TriangleAlert } from "@/components/icons";
 import type { PublicCard } from "@/domain/cards";
 import type { RoundResult } from "@/data/types";
 import { getVerdictMeta } from "@/domain/game";

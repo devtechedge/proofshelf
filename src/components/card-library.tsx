@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { useMemo, useState } from "react";
-import { ArrowUpRight, Search, X } from "lucide-react";
+import { ArrowUpRight, Search, X } from "@/components/icons";
 import type { EvidenceCard, Verdict } from "@/data/types";
 import { CATEGORIES } from "@/data/catalog";
 import { getVerdictMeta } from "@/domain/game";

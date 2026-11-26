@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { useCallback, useEffect, useState } from "react";
-import { ArrowRight, LoaderCircle, RefreshCw } from "lucide-react";
+import { ArrowRight, LoaderCircle, RefreshCw } from "@/components/icons";
 import type { EvidenceCard as EvidenceCardData, EvidenceSource, RoundAnswer, RoundResult, Verdict } from "@/data/types";
 import type { PublicCard } from "@/domain/cards";
 import { VERDICTS, getVerdictMeta } from "@/domain/game";

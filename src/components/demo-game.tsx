@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { useCallback, useEffect, useState } from "react";
-import { ArrowRight, RotateCcw, Sparkles } from "lucide-react";
+import { ArrowRight, RotateCcw, Sparkles } from "@/components/icons";
 import { DEMO_CARDS, DEMO_SOURCES } from "@/data/demo";
 import type { Verdict } from "@/data/types";
 import { ConfidenceDial } from "@/components/confidence-dial";

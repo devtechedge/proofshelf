@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { ArrowRight, BrainCircuit, Layers3, ScanLine, ShieldCheck } from "lucide-react";
+import { ArrowRight, BrainCircuit, Layers3, ScanLine, ShieldCheck } from "@/components/icons";
 import { DemoGameLoader } from "@/components/demo-game-loader";
 import { CATEGORIES } from "@/data/catalog";
 

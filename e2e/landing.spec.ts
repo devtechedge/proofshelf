@@ -8,6 +8,7 @@ test("landing demo is playable by keyboard and finishes at 3/3", async ({ page }
 
   await page.goto("/");
   await expect(page.getByRole("heading", { level: 1 })).toContainText("The claim is easy.");
+  await page.getByRole("heading", { name: "Three claims. No sign-up." }).scrollIntoViewIfNeeded();
   await expect(page.getByRole("button", { name: /Reveal the evidence/ })).toBeDisabled();
   await page.getByRole("button", { name: "Switch to dark mode" }).click();
   await expect(page.locator("html")).toHaveAttribute("data-theme", "dark");

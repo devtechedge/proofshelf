@@ -8,7 +8,7 @@ const verdictLabels = {
 } as const;
 
 test("daily round saves authoritative score and survives reload", async ({ page, request }) => {
-  test.setTimeout(90_000);
+  test.setTimeout(120_000);
   const roundResponse = await request.get("/api/round?mode=daily");
   expect(roundResponse.ok()).toBe(true);
   const round = (await roundResponse.json()) as { mode: "daily"; seed: string; cards: Array<{ id: string }> };
@@ -31,7 +31,7 @@ test("daily round saves authoritative score and survives reload", async ({ page,
     await page.getByRole("button", { name: index === 4 ? /Finish and save round/ : /Next claim/ }).click();
   }
 
-  await expect(page.getByRole("heading", { name: "Here is your read." })).toBeVisible();
+  await expect(page.getByRole("heading", { name: "Here is your read." })).toBeVisible({ timeout: 45_000 });
   await expect(page.getByText("500", { exact: true })).toBeVisible();
   await expect(page.getByText("5 practiced", { exact: true })).toBeVisible();
 

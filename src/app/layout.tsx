@@ -36,6 +36,7 @@ export const metadata: Metadata = {
   description:
     "A playable supplement evidence literacy game. Sort 100 claim cards, calibrate confidence, and learn what the research can actually support.",
   applicationName: "ProofShelf",
+  manifest: "/manifest.webmanifest",
   keywords: ["supplement evidence", "health literacy", "evidence cards", "supplement safety", "science game"],
   icons: { icon: "/favicon.svg" },
   openGraph: {

@@ -14,6 +14,7 @@ export function SiteFooter() {
         <nav aria-label="Footer navigation" className="flex flex-wrap items-start gap-x-6 gap-y-3 text-sm font-bold">
           <Link href="/play" className="hover:text-[var(--violet)]">Play</Link>
           <Link href="/cards" className="hover:text-[var(--violet)]">Card library</Link>
+          <Link href="/label-lens" className="hover:text-[var(--violet)]">Label Lens</Link>
           <Link href="/method" className="hover:text-[var(--violet)]">Method</Link>
           <a href="https://ods.od.nih.gov/" target="_blank" rel="noreferrer" className="hover:text-[var(--violet)]">NIH ODS</a>
           <a href="https://www.nccih.nih.gov/" target="_blank" rel="noreferrer" className="hover:text-[var(--violet)]">NCCIH</a>

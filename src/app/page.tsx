@@ -42,6 +42,7 @@ export default function HomePage() {
             <h2 className="mt-2 font-display text-3xl font-semibold tracking-[-0.06em] sm:text-4xl">Three claims. No sign-up.</h2>
           </div>
           <p className="max-w-md text-sm leading-6 text-[var(--muted)]">Choose a verdict, set your confidence, and reveal the reasoning. Your answer is a calibration tool, not a medical decision.</p>
+          <Link href="/label-lens" className="button-ghost min-h-9 px-2 text-sm">Or practice Label Lens <ArrowRight size={15} aria-hidden="true" /></Link>
         </div>
         <DemoGameLoader />
       </section>

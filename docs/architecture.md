@@ -13,7 +13,7 @@ ProofShelf is a Next.js App Router product with a static researched catalog and 
 ## Modules
 
 - `src/data`: card and source types, the 100-card catalog, source registry, and the three-card landing demo.
-- `src/domain`: deterministic shuffle, round construction, grading, calibration, review ordering, mastery, and public-card projection.
+- `src/domain`: deterministic shuffle, round construction, grading, calibration, review ordering, mastery, Label Lens question generation, and public-card projection.
 - `src/db`: Drizzle schema, idempotent Postgres DDL, and the database driver boundary.
 - `src/server`: anonymous sessions, origin checks, validation, typed HTTP errors, and response helpers.
 - `src/app/api`: catalog, round, progress, health, and session deletion endpoints.
@@ -53,6 +53,6 @@ ProofShelf is educational. It does not diagnose, prescribe, verify products, rec
 ## Verification
 
 - Vitest covers deterministic game logic, catalog integrity, schema constraints, session hashing, and API persistence.
-- Playwright covers the landing demo, daily round, replay protection, reload persistence, review mode, library search, card detail, theme persistence, 404, and mobile overflow.
+- Playwright covers the landing demo, daily round, replay protection, reload persistence, review mode, Label Lens, library search, card detail, theme persistence, 404, and mobile overflow.
 - Axe scans landing, game, library, and card detail for WCAG A and AA violations on desktop and mobile projects.
 - GitHub Actions runs lint, strict typecheck, unit tests, production build, Chromium installation, and the browser suite.

@@ -60,7 +60,7 @@ npm run e2e
 npx playwright install chromium
 ```
 
-The browser suite runs desktop Chromium and mobile Chromium projects. It covers the demo, daily round, persistence, replay protection, review mode, library, card detail, theme, 404, mobile overflow, and axe scans.
+The browser suite runs desktop Chromium and mobile Chromium projects. It covers the demo, daily round, persistence, replay protection, review mode, Label Lens, library, card detail, theme, 404, mobile overflow, and axe scans.
 
 ## Production checks
 

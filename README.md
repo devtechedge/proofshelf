@@ -28,6 +28,7 @@ The public deployment uses a real Neon Postgres backend. No account or email is 
 - Deterministic UTC-seeded daily rounds.
 - Review queues that prioritize weak and overconfident cards.
 - Searchable library with category and verdict filters.
+- Label Lens practice for forms, routes, serving language, and proprietary blends.
 - Individual evidence cards with form, route, label clue, safety note, and source trail.
 - Anonymous server-side progress with replay protection and one-click deletion.
 - Light and dark themes, keyboard play, touch controls, and reduced-motion support.
@@ -79,7 +80,7 @@ npx playwright install chromium
 npm run e2e
 ```
 
-`npm run check` runs lint, strict typecheck, unit tests, and the production build. The Playwright suite covers the landing demo, complete daily round, persistence, replay protection, review mode, library search, card detail, theme persistence, 404, mobile overflow, and axe scans.
+`npm run check` runs lint, strict typecheck, 25 unit and integration tests, and the production build. The 20-test Playwright suite covers the landing demo, daily round, persistence, replay protection, review mode, Label Lens, library search, card detail, theme persistence, 404, mobile overflow, and axe scans.
 
 ## Documentation
 

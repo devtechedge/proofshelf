@@ -6,6 +6,8 @@ Verified on 26 November 2026 against `https://proofshelf-ashy.vercel.app`.
 
 - 30 Vitest unit and integration tests.
 - 20 Playwright tests across desktop Chromium and mobile Chromium.
+- Final local browser run: 20 passed.
+- Final production smoke: Postgres health, manifest, desktop and mobile layout, and console checks passed.
 - Eight axe scans covering landing, game, library, and card detail on both projects.
 - Production build prerenders 100 card detail pages.
 

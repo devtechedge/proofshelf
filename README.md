@@ -80,7 +80,7 @@ npx playwright install chromium
 npm run e2e
 ```
 
-`npm run check` runs lint, strict typecheck, 25 unit and integration tests, and the production build. The 20-test Playwright suite covers the landing demo, daily round, persistence, replay protection, review mode, Label Lens, library search, card detail, theme persistence, 404, mobile overflow, and axe scans.
+`npm run check` runs lint, strict typecheck, 30 unit and integration tests, and the production build. The 20-test Playwright suite covers the landing demo, daily round, persistence, replay protection, review mode, Label Lens, library search, card detail, theme persistence, 404, mobile overflow, and axe scans.
 
 ## Documentation
 
@@ -88,6 +88,9 @@ npm run e2e
 - [Catalog methodology](docs/catalog-methodology.md)
 - [API reference](docs/api.md)
 - [Deployment](docs/deployment.md)
+- [Verification record](docs/verification.md)
+- [Performance notes](docs/performance.md)
+- [Changelog](CHANGELOG.md)
 - [Security policy](SECURITY.md)
 
 ## License

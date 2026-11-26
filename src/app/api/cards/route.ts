@@ -14,5 +14,8 @@ export async function GET(request: NextRequest) {
     const matchesVerdict = !verdict || card.verdict === verdict;
     return matchesQuery && matchesCategory && matchesVerdict;
   });
-  return Response.json({ cards, total: cards.length, catalogTotal: CARDS.length });
+  return Response.json(
+    { cards, total: cards.length, catalogTotal: CARDS.length },
+    { headers: { "Cache-Control": "public, max-age=300, s-maxage=86400, stale-while-revalidate=604800" } },
+  );
 }

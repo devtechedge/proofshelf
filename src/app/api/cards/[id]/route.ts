@@ -9,7 +9,10 @@ export async function GET(_request: NextRequest, context: { params: Promise<{ id
     const { id } = await context.params;
     const card = getCardById(id);
     if (!card) return jsonResponse({ error: "Card not found." }, { status: 404 });
-    return jsonResponse({ card, sources: getSourcesForCard(card.id) });
+    return Response.json(
+      { card, sources: getSourcesForCard(card.id) },
+      { headers: { "Cache-Control": "public, max-age=300, s-maxage=86400, stale-while-revalidate=604800" } },
+    );
   } catch (error) {
     return errorResponse(error);
   }
